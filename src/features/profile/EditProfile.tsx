@@ -55,7 +55,6 @@ const EditProfileForm: React.FC<EditFormProps> = ({
   const [isBuyer, setIsBuyer] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log("Current user : ", currentUser);
     if (!currentUser) return;
     setValue(
       "fullName",
@@ -74,7 +73,6 @@ const EditProfileForm: React.FC<EditFormProps> = ({
   }, [currentUser]);
 
   const handleEditSubmit = (formData: object) => {
-    console.log("Handling update profile...");
     const data: any = { ...formData };
     handleFormSubmit({
       firstName: data.fullName.split(" ")[0],
@@ -94,8 +92,6 @@ const EditProfileForm: React.FC<EditFormProps> = ({
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={{
           flex: 1,
-          //   justifyContent: "center",
-          //   alignContent: "center",
         }}
       >
         <View>

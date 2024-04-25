@@ -11,23 +11,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const SignInPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation<RootNavigationProps>();
-  const { currentUser, errors, isLoading } = useAppSelector(
+  const { isLoading } = useAppSelector(
     (state) => state.user
   );
-
-  console.log("USER :> ", currentUser);
-
   const handleSignin = (formData: SignInUser) => {
-    console.log("Signing user in :> ", formData);
     dispatch(signIn(formData));
   };
 
   useEffect(() => {
-    // we'll later use only from the asyncstorage
-    // if (currentUser?._id) {
-    //   console.log("Currenet user id :> ", currentUser._id);
-    //   navigation.replace("home");
-    // }
     AsyncStorage.getItem("user_id", (_error: any, result: any) => {
       if (result) navigation.replace("home");
     });

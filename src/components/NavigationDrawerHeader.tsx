@@ -9,7 +9,6 @@ type NavigationDrawerHeaderProps = {
 const NavigationDrawerHeader: React.FC<NavigationDrawerHeaderProps> = ({
   props,
 }) => {
-  const navigation = useNavigation();
   const toggleDrawer = () => {
     props.navigation.toggleDrawer();
   };

@@ -51,7 +51,6 @@ const SignUpForm: React.FC<FormProps> = ({
     register,
     setValue,
     formState: { errors },
-    setError,
   } = useForm({
     resolver: yupResolver(schema),
   });

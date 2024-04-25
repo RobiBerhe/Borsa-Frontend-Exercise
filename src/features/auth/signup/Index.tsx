@@ -17,7 +17,7 @@ import { StatusBar as SB } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { RootNavigationProps } from "../../../../App";
 
-
+// we can actually refactor this one even a more like taking out the location retrieval code into user store for example
 const SignupPage: React.FC = () => {
   const [location, setLocation] = useState<Location.LocationObject>();
   const [permissionStatus, setPermissionStatus] = useState("");
@@ -77,6 +77,7 @@ const SignupPage: React.FC = () => {
   return (
     <>
       <SafeAreaView style={styles.container}>
+        {/* will display a button for when a location access permission has't been granted asking for a permission */}
         {permissionStatus !== "" && permissionStatus !== "granted" ? (
           <Button
             title="Request location"

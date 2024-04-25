@@ -2,7 +2,6 @@ import { ErrorMessage } from "@hookform/error-message";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
 import {
-  Button,
   KeyboardAvoidingView,
   ScrollView,
   StyleSheet,
@@ -203,7 +202,6 @@ const styles = StyleSheet.create({
   },
   formControl: {
     flexDirection: "row",
-    // backgroundColor:"#143",
     height: 40,
     margin: 10,
     marginTop: 30,

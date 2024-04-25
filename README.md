@@ -29,7 +29,7 @@ Here're some of the project's best features:
 
 Technologies used in the project:
 
-* react native expo axios react community packages etc..
+* typescript,react native, expo, axios,redux saga, react community packages etc..
 
 ## Folder Structure
 

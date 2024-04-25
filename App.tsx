@@ -1,9 +1,5 @@
-import { StatusBar } from "expo-status-bar";
 import {
-  SafeAreaView,
   StyleSheet,
-  Text,
-  View,
   StatusBar as SB,
 } from "react-native";
 import SignupPage from "./src/features/auth/signup/Index";
@@ -13,7 +9,6 @@ import { createStackNavigator,StackNavigationProp } from "@react-navigation/stac
 import { NavigationContainer } from "@react-navigation/native";
 import SignInPage from "./src/features/auth/signin/Index";
 import React from "react";
-// import DashBoard from "./src/features/dashboard/Index";
 import DrawerNavigationRoutes from "./src/routes/DrawerNavigation";
 
 type RootNavigationPramsList = {
@@ -50,7 +45,6 @@ export default function App() {
           {/* the auth based routes (sign in and sign up) */}
           <Stack.Screen name="auth" component={AuthRoutes} options={{headerShown:false}}/>
           {/* dashboard/main screen navigations, achieved via drawer navigation */}
-          {/* <Stack.Screen name="home" component={DashBoard} options={{headerShown:false}}/> */}
           <Stack.Screen name="home" component={DrawerNavigationRoutes} options={{headerShown:false}}/>
         </Stack.Navigator>
       </NavigationContainer>
@@ -62,19 +56,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     backgroundColor: "#fff",
     paddingTop: SB.currentHeight,
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
 });
-
-
-
-{/* <SafeAreaView style={styles.container}>
-<View>
-  <SignupPage />
-  <StatusBar style="auto" />
-</View>
-</SafeAreaView> */}
