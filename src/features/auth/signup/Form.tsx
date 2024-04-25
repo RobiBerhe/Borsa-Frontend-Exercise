@@ -2,11 +2,12 @@ import { ErrorMessage } from "@hookform/error-message";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { Button, StyleSheet, Switch, Text, TextInput } from "react-native";
+import { Button, StyleSheet, Switch, Text, TextInput, View } from "react-native";
 import * as yup from "yup";
 import { UserType } from "../../users/types";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Loader from "../../../components/Loader";
+import { useAppSelector } from "../../../store/hooks";
 
 const schema = yup.object({
   fullName: yup
@@ -33,7 +34,7 @@ const schema = yup.object({
 
 type FormProps = {
   handleFormSubmit: (formData: UserType) => void;
-  handleSignIn:()=>void,
+  handleSignIn: () => void;
   defaultAddress: string;
   loading: boolean;
 };
@@ -55,6 +56,7 @@ const SignUpForm: React.FC<FormProps> = ({
     resolver: yupResolver(schema),
   });
   const [isBuyer, setIsBuyer] = useState<boolean>(false);
+  const user = useAppSelector((state)=> state.user);
 
   useEffect(() => {
     const address = defaultAddress ? defaultAddress.split(",") : "";
@@ -79,7 +81,14 @@ const SignUpForm: React.FC<FormProps> = ({
 
   return (
     <>
-        <Loader loading={loading} />
+      <Loader loading={loading} />
+      {user.errors ? (
+        <View style={{ alignItems: "center" }}>
+          <Text style={{ color: "#c42c21" }}>{user.errors}</Text>
+        </View>
+      ) : (
+        ""
+      )}
       <Text style={[styles.formLabel]}>Full Name</Text>
       <Controller
         control={control}
@@ -238,7 +247,6 @@ const SignUpForm: React.FC<FormProps> = ({
         value={isBuyer}
         onValueChange={setIsBuyer}
       />
-      {/* <Button disabled={state ==true} title="Sign up" onPress={handleSubmit(signup)} /> */}
       <TouchableOpacity
         style={styles.button}
         activeOpacity={0.5}
@@ -247,7 +255,8 @@ const SignUpForm: React.FC<FormProps> = ({
         <Text style={styles.buttonTextStyle}>SIGN UP</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={{ alignItems: "flex-end", marginLeft: 35, marginRight: 35 }} onPress={handleSignIn}
+        style={{ alignItems: "flex-end", marginLeft: 35, marginRight: 35 }}
+        onPress={handleSignIn}
       >
         <Text>Sign in instead?</Text>
       </TouchableOpacity>

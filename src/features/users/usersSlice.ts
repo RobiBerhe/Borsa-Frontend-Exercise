@@ -1,7 +1,6 @@
-import { createSlice, isPlainObject } from "@reduxjs/toolkit";
-import { IUserState, IUsersState, SignInUser, USERS, UserType, UserUpdateType } from "./types";
+import { createSlice } from "@reduxjs/toolkit";
+import { IUsersState, SignInUser, USERS, UserType, UserUpdateType } from "./types";
 import { PayloadAction } from "@reduxjs/toolkit";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const initialState: IUsersState = {
   usersList: {data:[],limit:10,page:1,total:0,totalSeen:0},
@@ -14,15 +13,13 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     signUp: (state: IUsersState, action: PayloadAction<UserType>) => {
-      (state.isLoading = true), (state.errors = []);
-      // state.currentUser = action.payload
-      console.log("Action sign up dispatched...");
+      state.isLoading = true;
+      state.errors = "";
     },
     signUpSuccess: (state: IUsersState, action: PayloadAction<UserType>) => {
       state.isLoading = false;
       state.errors = [];
       state.currentUser = action.payload;
-      console.log("Curent user :> ", state);
     },
     signUpError: (
       state: IUsersState,
@@ -45,11 +42,6 @@ export const userSlice = createSlice({
       state.isLoading = false;
       state.errors = [];
       state.currentUser = action.payload;
-      // if (state.currentUser && state.currentUser._id) {
-      //   AsyncStorage.setItem("user_id", state.currentUser._id);
-      //   AsyncStorage.setItem("email", state.currentUser.email);
-      // }
-      console.log("Curent user :> ", state);
     },
 
     userSignInError: (

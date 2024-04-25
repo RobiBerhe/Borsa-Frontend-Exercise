@@ -32,8 +32,18 @@ function* signUpSaga(action: PayloadAction<UserType>) {
     yield put(signUpSuccess(response.data));
   } catch (error) {
     console.log("error :> ", error);
-    if (Array.isArray(error)) {
-      yield put(signUpError(error));
+
+    const err = error as AxiosError;
+    const { response } = err;
+    const data: any = response?.data;
+
+    if (response && data && data && data.message) {
+      let { message } = data;
+      if (message) yield put(signUpError(message));
+    } else {
+      yield put(
+        signUpError("Some error has occured, please try again a while later")
+      );
     }
   }
 }
