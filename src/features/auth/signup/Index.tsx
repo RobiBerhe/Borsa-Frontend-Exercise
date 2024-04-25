@@ -55,7 +55,6 @@ const SignupPage: React.FC = () => {
       );
       const { address } = response.data;
       if (!address) return;
-      console.log("response :> ", response.data);
       const city = address.city
         ? address.city
         : address.state_district
@@ -67,10 +66,9 @@ const SignupPage: React.FC = () => {
     })();
 
     if (currentUser) navigation.replace("signin");
-  }, []);
+  });
 
   const signup = (formdata: UserType) => {
-    console.log("handle submit has been called!!!", formdata);
     dispatch(signUp(formdata));
   };
 
