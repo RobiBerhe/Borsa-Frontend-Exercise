@@ -1,8 +1,8 @@
-<h1 align="center" id="title">Borsa Frontend Exercise</h1>
+# Borsa Frontend Exercise
 
-<p id="description">A react native (mobile) project showcasing signin/signupa dashboard/homeand profile page integration with backend.</p>
+* A react native (mobile) project showcasing signin/signupa dashboard/homeand profile page integration with backend.
 
-<h2> Features</h2>
+## Features
 
 Here're some of the project's best features:
 
@@ -11,22 +11,34 @@ Here're some of the project's best features:
 * Dashboard
 * Profile
 
-<h2>🛠️ Installation Steps:</h2>
+## 🛠️ Installation Steps
 
-<p>1. Install project dependencies and install expo go on your mobile device</p>
+1. Install project dependencies and install expo go on your mobile device
 
-```
-npx expo install
-```
+    `
+    npx expo install
+    `
 
-<p>2. run the app with expo</p>
+2. run the app with expo
 
-```
-npx expo start
-```
+    `
+    npx expo start
+    `
 
-<h2>💻 Built with</h2>
+## 💻 Built with
 
 Technologies used in the project:
 
 * react native expo axios react community packages etc..
+
+## Folder Structure
+
+* src
+  * components
+    * we may store components that we might need to use in multiple places later on
+  * features
+    * this is where every individual feature is maintained, this kind of file organizarion allows for more flexibility and maintainability as every feature can be independently be updated without having to modify other parts of the app.
+  * routes
+    * we might need this for routes especially when apps get large, helps to separate out and make the starting boilerplate code easier to be readable.
+  * store
+    * this is where our state management configuration is handled.
